@@ -17,6 +17,12 @@ case $1 in
         ;;
 esac
 
+curver=`file /usr/local/bin/zig | awk -F / '{print $(NF-1)}'`
+if [ $curver = ${pkg%.tar.xz} ]; then
+    echo "No need to do anything, you are good to go."
+    exit 0
+fi
+
 if [ ! -e ~/.zigup/ ]; then
     mkdir -p ~/.zigup
 fi

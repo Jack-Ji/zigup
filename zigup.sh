@@ -29,6 +29,10 @@ fi
 
 url="https://ziglang.org/builds/$pkg"
 if [ ! -e ~/.zigup/$pkg ]; then
+    if [ $1 = master ]; then
+        ver=${pkg%.tar.xz}
+        rm -rf ~/.zigup/${ver%dev*}*
+    fi
     wget -O ~/.zigup/$pkg $url
     tar -xJvf ~/.zigup/$pkg -C ~/.zigup
 fi

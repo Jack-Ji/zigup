@@ -33,7 +33,7 @@ if [ ! -e ~/.zigup/$pkg ]; then
         ver=${pkg%.tar.xz}
         rm -rf ~/.zigup/${ver%dev*}*
     fi
-    wget -O ~/.zigup/$pkg $url
+    wget -c $url && mv $pkg ~/.zigup/
     tar -xJvf ~/.zigup/$pkg -C ~/.zigup
 fi
 

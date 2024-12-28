@@ -27,12 +27,9 @@ if [ ! -e ~/.zigup/ ]; then
 fi
 
 if [ ! -e ~/.zigup/$pkg ]; then
-    if [ $1 = master ]; then
-        rm -rf ~/.zigup/${target_ver%dev*}*
-    fi
     wget -c $url && mv $pkg ~/.zigup/
-    tar -xJvf ~/.zigup/$pkg -C ~/.zigup
 fi
+tar -xJvf ~/.zigup/$pkg -C ~/.zigup
 
 echo "You might need to input sudo password..."
 sudo ln -sf ~/.zigup/$target_ver/zig /usr/local/bin
